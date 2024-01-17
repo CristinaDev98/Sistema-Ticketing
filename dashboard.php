@@ -35,18 +35,26 @@ session_start();
             color: #5ac66c;
             padding: 10px;
             margin: 30px;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             border-radius: 8px;
             text-align: center;
         }
-        .title-dash{
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .title-dash {
             text-align: center;
             margin-top: 1em;
             margin-bottom: 1em;
         }
 
+        .title-nav {
+            margin-top: -2px;
+            margin-left: 1em;
+        }
     </style>
-
 </head>
 
 <body>
