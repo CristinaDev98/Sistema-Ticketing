@@ -34,7 +34,7 @@ session_start();
             background-color: #fff;
             color: #5ac66c;
             padding: 10px;
-            margin: 30px;
+            margin: 30px 40px 30px;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             border-radius: 8px;
             text-align: center;
@@ -46,13 +46,22 @@ session_start();
 
         .title-dash {
             text-align: center;
-            margin-top: 1em;
-            margin-bottom: 1em;
+            margin-top: 2em;
+            margin-bottom: 2em;
         }
 
         .title-nav {
             margin-top: -2px;
             margin-left: 1em;
+            /* min-width: 50%; */
+            float: left;
+        }
+        .name-user{
+            /* min-width: 50%; */
+            float: right;
+            margin-top: 10px;
+            margin-right: 2em;
+            
         }
     </style>
 </head>
@@ -61,19 +70,33 @@ session_start();
     <div class="navbar">
         <div class="container">
             <h1 class="title-nav">Sistema Ticketing</h1>
+            <h4 class="name-user">
+            <?php
+        // Verifica se l'utente è autenticato e ha il ruolo 'utilizzatore'
+        if (isset($_SESSION['username']) && isset($_SESSION['role']) && $_SESSION['role'] === 'utilizzatore') {
+            echo '<span style="font-size: 1.2em;">Ciao, ' . $_SESSION['username'] . '</span>';
+        } else {
+            // L'utente non è autorizzato, puoi aggiungere una gestione qui
+            echo 'Non sei autorizzato a visualizzare questa pagina.';
+        }
+        ?>
+            </h4>
         </div>
+        
     </div>
 
     <div class="container">
         <h1 class="title-dash">Benvenuto nella tua dashboard</h1>
-        <div class="card">
-            <h2>Crea Nuovo Ticket</h2>
-            
-        </div>
+        
+        <a href="create_ticket.php" style="text-decoration: none;">
+            <div class="card">
+                <h2>Crea Nuovo Ticket</h2>
+            </div>
+        </a>
 
         <div class="card">
             <h2>Visualizza Ticket</h2>
-            
+
         </div>
 
         <div class="card">

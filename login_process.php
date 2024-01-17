@@ -1,31 +1,35 @@
 <?php
+session_start();
 include('config.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $queryGetPasswordHash = "SELECT password, role FROM users WHERE username = '$username'";
-    $resultGetPasswordHash = $conn->query($queryGetPasswordHash);
+    // Connessione al database (modifica le credenziali in base al tuo ambiente)
+    $conn = new mysqli('localhost', 'root', '', 'sistema_ticketing');
 
-    if (!$resultGetPasswordHash) {
+    if ($conn->connect_error) {
+        die("Connessione al database fallita: " . $conn->connect_error);
+    }
+
+    // Preparazione della query SQL
+    $queryVerificaCredenziali = "SELECT id, username, password FROM users WHERE username = '$username'";
+    $result = $conn->query($queryVerificaCredenziali);
+
+    if (!$result) {
         die("Errore nella query: " . $conn->error);
     }
 
-    while ($row = $resultGetPasswordHash->fetch_assoc()) {
-        echo "Password: " . $row['password'] . "<br>";
-        echo "Role: " . $row['role'] . "<br>";
-        $passInDatabase = $row['password'];
-        $role = $row['role'];
-    }
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $dbPassword = $row['password'];
 
-    if ($resultGetPasswordHash->num_rows > 0) {
 
-        echo "password: $password";
-        echo "hashInDatabase: $passInDatabase";
-
-        if ($password === $passInDatabase) {
-            echo "Login effettuato con successo!";
+        if ($password === $dbPassword) {
+            // Credenziali corrette, autentica l'utente
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['username'] = $row['username'];
 
             if ($role === 'utilizzatore') {
                 header('Location: dashboard.php'); 
@@ -41,5 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Utente non trovato. Riprova.";
     }
 
+    // Chiudi la connessione al database
     $conn->close();
 }
