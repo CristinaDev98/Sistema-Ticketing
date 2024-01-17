@@ -10,7 +10,6 @@ $config = [
 
 $conn = new mysqli($config['db_host'], $config['db_username'],$config['db_password'], $config['db_database']);
 
-// Verifica la connessione
 if ($conn->connect_error) {
     die("Connessione al database fallita: " . $conn->connect_error);
 }

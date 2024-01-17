@@ -19,8 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $role = $row['role'];
     }
 
-    // PassUtilizzatore
-
     if ($resultGetPasswordHash->num_rows > 0) {
 
         echo "password: $password";
