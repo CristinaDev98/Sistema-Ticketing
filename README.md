@@ -43,4 +43,15 @@ INSERT INTO users (username, password, role) VALUES
 ('amministratore', 'PassAmministratore', 'amministratore');
 ```
 
+```bash
+CREATE TABLE IF NOT EXISTS ticket (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    message TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+```
+
 Assicurarsi di eseguire gli script SQL nella directory appropriata del progetto.
