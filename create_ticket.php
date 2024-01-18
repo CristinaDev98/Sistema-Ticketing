@@ -39,6 +39,13 @@ session_start();
             margin-top: -2px;
             margin-left: 1em;
         }
+        .home-link {
+            float: right;
+            margin-top: -2.5em;
+            margin-right: 2em;
+            cursor: pointer;
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -46,26 +53,29 @@ session_start();
     <div class="navbar">
         <div class="container">
             <h1 class="title-nav">Sistema Ticketing</h1>
+            <h3 class="home-link" onclick="location.href='dashboard.php'">Home</h3>
         </div>
     </div>
 
-    <form class="form">
+    <div class="container">
+    <form class="form" action="ticket_process.php" method="POST">
 
         <div class="flex">
             <h1 style="text-align: center;">Crea un ticket</h1>
         </div>
         <label>
-            <textarea required="" rows="3" class="input01"></textarea>
+            <textarea required="" rows="3" class="input01" name="message" id="message"></textarea>
             <span>Messaggio</span>
         </label>
 
-        <button class="fancy" href="#">
+        <button class="fancy" type="submit" href="dashboard.php">
             <span class="top-key"></span>
             <span class="text">Apri Ticket</span>
             <span class="bottom-key-1"></span>
             <span class="bottom-key-2"></span>
         </button>
     </form>
+    </div>
 </body>
 
 </html>

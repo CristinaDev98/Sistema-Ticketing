@@ -90,10 +90,11 @@ session_start();
             </div>
         </a>
 
-        <div class="card">
-            <h2>Visualizza Ticket</h2>
-
-        </div>
+        <a href="view_ticket.php" style="text-decoration: none;">
+            <div class="card">
+                <h2>Visualizza Ticket</h2>
+            </div>
+        </a>
 
         <div class="card">
             <h2>Chiudi Ticket</h2>
