@@ -16,9 +16,9 @@
             <input type="text" id="username" name="username" placeholder="Nome Utente" required>
             <br>
             <input type="password" id="password" name="password" placeholder="Password" required>
-            <br>
-            <input type="text" id="role" name="role" placeholder="Ruolo" required>
-            <input type="submit" value="Login">
+            <!-- <br> -->
+            <!-- <input type="text" id="role" name="role" placeholder="Ruolo" required> -->
+            <input type="submit" value="Registrati">
         </form>
     </div>
 </body>

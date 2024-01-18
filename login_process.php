@@ -6,15 +6,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Connessione al database (modifica le credenziali in base al tuo ambiente)
     $conn = new mysqli('localhost', 'root', '', 'sistema_ticketing');
 
     if ($conn->connect_error) {
         die("Connessione al database fallita: " . $conn->connect_error);
     }
 
-    // Preparazione della query SQL
-    $queryVerificaCredenziali = "SELECT id, username, password FROM users WHERE username = '$username'";
+    
+    $queryVerificaCredenziali = "SELECT id, username, password, role FROM users WHERE username = '$username'";
     $result = $conn->query($queryVerificaCredenziali);
 
     if (!$result) {
@@ -24,12 +23,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $dbPassword = $row['password'];
+        $role = $row['role'];
 
 
         if ($password === $dbPassword) {
             // Credenziali corrette, autentica l'utente
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['username'] = $row['username'];
+            
 
             if ($role === 'utilizzatore') {
                 header('Location: dashboard.php'); 

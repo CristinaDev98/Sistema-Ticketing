@@ -16,10 +16,10 @@
             <input type="text" id="username" name="username" placeholder="Nome Utente" required>
             <br>
             <input type="password" id="password" name="password" placeholder="Password" required>
-            <br>
-            <input type="text" id="role" name="role" placeholder="Ruolo" required>
-            <input type="submit" value="Login">
-            <button type="button"><a href="register.php">Registrati</a></button>
+            <!-- <br>
+            <input type="text" id="role" name="role" placeholder="Ruolo" required> -->
+            <input type="submit" id="loginButton" value="Login">
+            <button type="button"><a id="registerButton" href="register.php">Registrati</a></button>
         </form>
     </div>
 </body>

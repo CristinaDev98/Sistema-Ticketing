@@ -36,7 +36,8 @@ input {
     margin-bottom: 16px;
     width: 100%;
     box-sizing: border-box;
-    border-radius: 10px;
+    border-radius: 8px;
+    border: 1px solid grey;
 }
 
 input[type="submit"] {
@@ -46,4 +47,26 @@ input[type="submit"] {
     cursor: pointer;
     margin-top: .5em;
     max-width: 50%;
+}
+
+button[type="button"] {
+    background-color: #ffffff;
+    color: #5ac66c;
+    font-size: medium;
+    cursor: pointer;
+    margin-top: .5em;
+    max-width: 50%;
+    box-sizing: border-box;
+    border: 0px;
+}
+
+#loginButton {
+    border: 1px;
+    min-width: 100%;
+    border-radius: 6px;
+}
+
+#registerButton {
+    text-decoration: none;
+    color: #5466eb;
 }
