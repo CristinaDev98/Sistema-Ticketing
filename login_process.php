@@ -25,11 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dbPassword = $row['password'];
         $role = $row['role'];
 
-
         if ($password === $dbPassword) {
-            // Credenziali corrette, autentica l'utente
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['username'] = $row['username'];
+            $_SESSION['role'] = $role;
             
 
             if ($role === 'utilizzatore') {
@@ -46,6 +45,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Utente non trovato. Riprova.";
     }
 
-    // Chiudi la connessione al database
     $conn->close();
 }

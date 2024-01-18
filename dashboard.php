@@ -53,11 +53,9 @@ session_start();
         .title-nav {
             margin-top: -2px;
             margin-left: 1em;
-            /* min-width: 50%; */
             float: left;
         }
         .name-user{
-            /* min-width: 50%; */
             float: right;
             margin-top: 10px;
             margin-right: 2em;
@@ -72,11 +70,9 @@ session_start();
             <h1 class="title-nav">Sistema Ticketing</h1>
             <h4 class="name-user">
             <?php
-        // Verifica se l'utente è autenticato e ha il ruolo 'utilizzatore'
         if (isset($_SESSION['username']) && isset($_SESSION['role']) && $_SESSION['role'] === 'utilizzatore') {
             echo '<span style="font-size: 1.2em;">Ciao, ' . $_SESSION['username'] . '</span>';
         } else {
-            // L'utente non è autorizzato, puoi aggiungere una gestione qui
             echo 'Non sei autorizzato a visualizzare questa pagina.';
         }
         ?>

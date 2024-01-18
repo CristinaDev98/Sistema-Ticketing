@@ -46,13 +46,20 @@ session_start();
 
         .title-dash {
             text-align: center;
-            margin-top: 1em;
-            margin-bottom: 1em;
+            margin-top: 2em;
+            margin-bottom: 2em;
         }
 
         .title-nav {
             margin-top: -2px;
             margin-left: 1em;
+            float: left;
+        }
+        .name-user{
+            float: right;
+            margin-top: 10px;
+            margin-right: 2em;
+            
         }
     </style>
 </head>
@@ -61,6 +68,15 @@ session_start();
     <div class="navbar">
         <div class="container">
             <h1 class="title-nav">Sistema Ticketing</h1>
+            <h4 class="name-user">
+            <?php
+        if (isset($_SESSION['username']) && isset($_SESSION['role']) && $_SESSION['role'] === 'amministratore') {
+            echo '<span style="font-size: 1.2em;">Ciao, ' . $_SESSION['username'] . '</span>';
+        } else {
+            echo 'Non sei autorizzato a visualizzare questa pagina.';
+        }
+        ?>
+            </h4>
         </div>
     </div>
 
