@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Se l'utente non è autenticato, reindirizzalo a login.php
 if (!isset($_SESSION['utente'])) {
     header('Location: login.php');
     exit();

@@ -15,6 +15,17 @@ if ($conn->connect_error) {
     die('Connessione al database fallita: ' . $conn->connect_error);
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_ticket'])) {
+    $ticketIdToDelete = $_POST['delete_ticket'];
+
+    $queryDeleteTicket = "DELETE FROM ticket WHERE user_id = '$userId' AND id = '$ticketIdToDelete'";
+    if ($conn->query($queryDeleteTicket) === true) {
+        echo '<script>alert("Ticket eliminato con successo!"); window.location.href = "dashboard.php";</script>';
+    } else {
+        echo '<script>alert("Errore durante l\'eliminazione del ticket: ' . $conn->error . '");</script>';
+    }
+}
+
 $queryTicketUtente = "SELECT * FROM ticket WHERE user_id = '$userId'";
 $resultTicket = $conn->query($queryTicketUtente);
 
@@ -62,7 +73,7 @@ if (!$resultTicket) {
             text-align: center;
         }
 
-        .n-ticket{
+        .n-ticket {
             color: #5ac66c;
         }
 
@@ -73,9 +84,27 @@ if (!$resultTicket) {
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             border-radius: 8px;
             text-align: center;
+            position: relative;
         }
 
-        .card:hover,.card-ticket:hover{
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff6961;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background-color: #cc0000;
+        }
+
+        .card:hover,
+        .card-ticket:hover {
             transform: scale(1.05);
         }
 
@@ -97,6 +126,7 @@ if (!$resultTicket) {
             margin-right: 2em;
 
         }
+
         .home-link {
             float: right;
             margin-top: 10px;
@@ -116,16 +146,20 @@ if (!$resultTicket) {
     </div>
 
     <div class="container">
-            <h1 class="title-dash">I tuoi ticket</h1>
-            <?php
-            foreach ($resultTicket as $ticket) {
-                echo '<div class="card-ticket">';
-                echo '<h2 class="n-ticket">Ticket #' . $ticket['id'] . '</h2>';
-                echo '<p>' . $ticket['message'] . '</p>';
-                echo '<p>Data creazione: ' . $ticket['created_at'] . '</p>';
-                echo '</div>';
-            }
-            ?>
+        <h1 class="title-dash">I tuoi ticket</h1>
+        <?php
+        foreach ($resultTicket as $ticket) {
+            echo '<div class="card-ticket">';
+            echo '<button class="delete-button" type="submit" form="deleteForm_' . $ticket['id'] . '">&times;</button>';
+            echo '<h2 class="n-ticket">Ticket #' . $ticket['id'] . '</h2>';
+            echo '<p>' . $ticket['message'] . '</p>';
+            echo '<p>Data creazione: ' . $ticket['created_at'] . '</p>';
+            echo '<form method="post" id="deleteForm_' . $ticket['id'] . '">';
+            echo '<input type="hidden" name="delete_ticket" value="' . $ticket['id'] . '">';
+            echo '</form>';
+            echo '</div>';
+        }
+        ?>
     </div>
 </body>
 
