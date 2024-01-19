@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_ticket'])) {
     $newMessage = $_POST['new_message'];
 
     $queryUpdateTicket = "UPDATE ticket SET message = '$newMessage' WHERE id = '$ticketIdToUpdate'";
-    
+
     if ($conn->query($queryUpdateTicket) === true) {
         echo '<script>alert("Ticket aggiornato con successo!"); window.location.href = "view_all_ticket.php";</script>';
     } else {
@@ -132,7 +132,8 @@ if (isset($_GET['ticket_id'])) {
         .update-button:hover {
             background-color: #218838;
         }
-        .title-edit{
+
+        .title-edit {
             text-align: center;
         }
 

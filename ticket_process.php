@@ -1,11 +1,11 @@
 <?php
 session_start();
-include('config.php');
+include 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_SESSION['user_id'])) {
         echo 'Non sei autorizzato a creare un ticket.';
-        exit;
+        exit();
     }
 
     $userId = $_SESSION['user_id'];
@@ -14,17 +14,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn = new mysqli('localhost', 'root', '', 'sistema_ticketing');
 
     if ($conn->connect_error) {
-        die("Connessione al database fallita: " . $conn->connect_error);
+        die('Connessione al database fallita: ' . $conn->connect_error);
     }
 
     $queryInserimentoTicket = "INSERT INTO ticket (user_id, message) VALUES ('$userId', '$message')";
 
-    if ($conn->query($queryInserimentoTicket) === TRUE) {
-        echo '<script>alert("Ticket creato con successo!"); window.location.href = "dashboard.php";</script>';
-        exit;
+    if ($conn->query($queryInserimentoTicket) === true) {
+        echo '<script>
+            alert("Ticket creato con successo!");
+            window.location.href = "dashboard.php";
+        </script>';
+        exit();
     } else {
-        echo "Errore durante la creazione del ticket: " . $conn->error;
+        echo 'Errore durante la creazione del ticket: ' . $conn->error;
     }
-    
+
     $conn->close();
 }

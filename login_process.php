@@ -1,6 +1,15 @@
 <?php
 session_start();
-include('config.php');
+include 'config.php';
+
+// Logout
+if (isset($_GET['logout'])) {
+    session_unset();
+    session_destroy();
+    $_SESSION['logout_message'] = 'Logout effettuato con successo.';
+    header('Location: login.php');
+    exit();
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -9,15 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn = new mysqli('localhost', 'root', '', 'sistema_ticketing');
 
     if ($conn->connect_error) {
-        die("Connessione al database fallita: " . $conn->connect_error);
+        die('Connessione al database fallita: ' . $conn->connect_error);
     }
 
-    
     $queryVerificaCredenziali = "SELECT id, username, password, role FROM users WHERE username = '$username'";
     $result = $conn->query($queryVerificaCredenziali);
 
     if (!$result) {
-        die("Errore nella query: " . $conn->error);
+        die('Errore nella query: ' . $conn->error);
     }
 
     if ($result->num_rows > 0) {
@@ -29,20 +37,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['username'] = $row['username'];
             $_SESSION['role'] = $role;
-            
 
             if ($role === 'utilizzatore') {
-                header('Location: dashboard.php'); 
+                header('Location: dashboard.php');
             } elseif ($role === 'amministratore') {
-                header('Location: dashboard_admin.php'); 
+                header('Location: dashboard_admin.php');
             } else {
-                echo "Errore: Ruolo non valido.";
+                echo 'Errore: Ruolo non valido.';
             }
         } else {
-            echo "Credenziali non valide. Riprova.";
+            echo 'Credenziali non valide. Riprova.';
         }
     } else {
-        echo "Utente non trovato. Riprova.";
+        echo 'Utente non trovato. Riprova.';
     }
 
     $conn->close();

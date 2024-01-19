@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_ticket'])) {
     }
 }
 
-$queryAllTickets = "SELECT ticket.*, users.username FROM ticket INNER JOIN users ON ticket.user_id = users.id";
+$queryAllTickets = 'SELECT ticket.*, users.username FROM ticket INNER JOIN users ON ticket.user_id = users.id';
 $resultAllTickets = $conn->query($queryAllTickets);
 
 if (!$resultAllTickets) {
@@ -134,7 +134,7 @@ if (!$resultAllTickets) {
             text-decoration: underline;
         }
 
-        .edit-button{
+        .edit-button {
             text-decoration: none;
             float: right;
             margin-top: -1em;

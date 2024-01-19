@@ -62,6 +62,13 @@ session_start();
             margin-right: 2em;
 
         }
+
+        .logout-button {
+            text-decoration: none;
+            float: right;
+            margin-top: .5em;
+            color: blue;
+        }
     </style>
 </head>
 
@@ -73,6 +80,8 @@ session_start();
                 <?php
                 if (isset($_SESSION['username']) && isset($_SESSION['role']) && $_SESSION['role'] === 'amministratore') {
                     echo '<span style="font-size: 1.2em;">Ciao, ' . $_SESSION['username'] . '</span>';
+                    echo '<br>';
+                    echo '<a class="logout-button" href="login_process.php?logout">Logout</a>';
                 } else {
                     echo 'Non sei autorizzato a visualizzare questa pagina.';
                 }
@@ -80,7 +89,6 @@ session_start();
             </h4>
         </div>
     </div>
-
     <div class="container">
         <h1 class="title-dash">Dahboard Admin</h1>
         <a href="view_all_ticket.php" style="text-decoration: none;">
