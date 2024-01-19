@@ -55,11 +55,12 @@ session_start();
             margin-left: 1em;
             float: left;
         }
-        .name-user{
+
+        .name-user {
             float: right;
             margin-top: 10px;
             margin-right: 2em;
-            
+
         }
     </style>
 </head>
@@ -69,23 +70,25 @@ session_start();
         <div class="container">
             <h1 class="title-nav">Sistema Ticketing</h1>
             <h4 class="name-user">
-            <?php
-        if (isset($_SESSION['username']) && isset($_SESSION['role']) && $_SESSION['role'] === 'amministratore') {
-            echo '<span style="font-size: 1.2em;">Ciao, ' . $_SESSION['username'] . '</span>';
-        } else {
-            echo 'Non sei autorizzato a visualizzare questa pagina.';
-        }
-        ?>
+                <?php
+                if (isset($_SESSION['username']) && isset($_SESSION['role']) && $_SESSION['role'] === 'amministratore') {
+                    echo '<span style="font-size: 1.2em;">Ciao, ' . $_SESSION['username'] . '</span>';
+                } else {
+                    echo 'Non sei autorizzato a visualizzare questa pagina.';
+                }
+                ?>
             </h4>
         </div>
     </div>
 
     <div class="container">
         <h1 class="title-dash">Dahboard Admin</h1>
-        <div class="card">
-            <h2>Visualizza Ticket</h2>
+        <a href="view_all_ticket.php" style="text-decoration: none;">
+            <div class="card">
+                <h2>Visualizza Ticket</h2>
 
-        </div>
+            </div>
+        </a>
 
         <div class="card">
             <h2>Modifica Ticket</h2>

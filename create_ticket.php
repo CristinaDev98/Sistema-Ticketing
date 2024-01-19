@@ -64,7 +64,7 @@ session_start();
             <h1 style="text-align: center;">Crea un ticket</h1>
         </div>
         <label>
-            <textarea required="" rows="3" class="input01" name="message" id="message"></textarea>
+            <textarea required="" rows="3" class="input01" name="message" id="message" required></textarea>
             <span>Messaggio</span>
         </label>
 
