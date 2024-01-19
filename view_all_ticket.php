@@ -13,6 +13,7 @@ if ($conn->connect_error) {
     die('Connessione al database fallita: ' . $conn->connect_error);
 }
 
+// Gestione dell'eliminazione del ticket
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_ticket'])) {
     $ticketIdToDelete = $_POST['delete_ticket'];
 
@@ -132,6 +133,12 @@ if (!$resultAllTickets) {
             cursor: pointer;
             text-decoration: underline;
         }
+
+        .edit-button{
+            text-decoration: none;
+            float: right;
+            margin-top: -1em;
+        }
     </style>
 </head>
 
@@ -152,6 +159,7 @@ if (!$resultAllTickets) {
             echo '<h2 class="n-ticket">Ticket #' . $ticket['id'] . ' - ' . $ticket['username'] . '</h2>';
             echo '<p>' . $ticket['message'] . '</p>';
             echo '<p>Data creazione: ' . $ticket['created_at'] . '</p>';
+            echo '<a class="edit-button" href="edit_ticket.php?ticket_id=' . $ticket['id'] . '">Modifica Ticket</a>';
             echo '<form method="post" id="deleteForm_' . $ticket['id'] . '">';
             echo '<input type="hidden" name="delete_ticket" value="' . $ticket['id'] . '">';
             echo '</form>';
