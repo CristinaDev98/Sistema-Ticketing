@@ -7,11 +7,11 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$conn = new mysqli('localhost', 'root', '', 'sistema_ticketing');
+// $conn = new mysqli('localhost', 'root', '', 'sistema_ticketing');
 
-if ($conn->connect_error) {
-    die('Connessione al database fallita: ' . $conn->connect_error);
-}
+// if ($conn->connect_error) {
+//     die('Connessione al database fallita: ' . $conn->connect_error);
+// }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_ticket'])) {
     $ticketIdToUpdate = $_POST['update_ticket'];

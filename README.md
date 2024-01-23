@@ -9,6 +9,20 @@ Per avviare il server, esegui il seguente comando:
 php -S localhost:8000
 ```
 
+## Congfigurazione 
+Compila il file config.php in base alle tue impostazioni di connessione del DB
+
+```bash
+$config = [
+    'db_connection' => 'your_db_connection',
+    'db_host' => 'your_db_host',
+    'db_port' => 'your_db_port',
+    'db_database' => 'your_db_database',
+    'db_username' => 'your_db_username',
+    'db_password' => 'your_db_password',
+];
+```
+
 ## Creazione del Database
 Puoi creare il database in due modi: tramite un'applicazione di gestione del database o tramite il terminale.
 
