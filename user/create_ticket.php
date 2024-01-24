@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../user/ticket_process.php'
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Ticketing</title>
 
-    <link rel="stylesheet" type="text/css" href="style_ticket.css">
+    <link rel="stylesheet" type="text/css" href="../style_ticket.css">
 
     <style>
         body {
@@ -54,7 +55,7 @@ session_start();
     <div class="navbar">
         <div class="container">
             <h1 class="title-nav">Sistema Ticketing</h1>
-            <h3 class="home-link" onclick="location.href='dashboard.php'">Home</h3>
+            <h3 class="home-link" onclick="location.href='/user/dashboard.php'">Home</h3>
         </div>
     </div>
 
@@ -69,7 +70,7 @@ session_start();
                 <span>Messaggio</span>
             </label>
 
-            <button class="fancy" type="submit" href="dashboard.php">
+            <button class="fancy" type="submit" href="/user/dashboard.php">
                 <span class="top-key"></span>
                 <span class="text">Apri Ticket</span>
                 <span class="bottom-key-1"></span>

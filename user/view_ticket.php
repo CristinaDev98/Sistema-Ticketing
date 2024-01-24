@@ -1,38 +1,6 @@
 <?php
 session_start();
-include 'config.php';
-
-if (!isset($_SESSION['user_id'])) {
-    echo 'Non sei autorizzato a visualizzare questa pagina.';
-    exit();
-}
-
-$userId = $_SESSION['user_id'];
-
-$conn = new mysqli('localhost', 'root', '', 'sistema_ticketing');
-
-if ($conn->connect_error) {
-    die('Connessione al database fallita: ' . $conn->connect_error);
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_ticket'])) {
-    $ticketIdToDelete = $_POST['delete_ticket'];
-
-    $queryDeleteTicket = "DELETE FROM ticket WHERE user_id = '$userId' AND id = '$ticketIdToDelete'";
-    if ($conn->query($queryDeleteTicket) === true) {
-        echo '<script>alert("Ticket eliminato con successo!"); window.location.href = "dashboard.php";</script>';
-    } else {
-        echo '<script>alert("Errore durante l\'eliminazione del ticket: ' . $conn->error . '");</script>';
-    }
-}
-
-$queryTicketUtente = "SELECT * FROM ticket WHERE user_id = '$userId'";
-$resultTicket = $conn->query($queryTicketUtente);
-
-if (!$resultTicket) {
-    die('Errore nella query: ' . $conn->error);
-}
-
+include '../user/view_ticket_process.php';
 ?>
 
 <!DOCTYPE html>
@@ -164,7 +132,3 @@ if (!$resultTicket) {
 </body>
 
 </html>
-
-<?php
-$conn->close();
-?>

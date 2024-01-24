@@ -7,7 +7,7 @@
     <title>Sistema Ticketing - Registrati</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
 
 </head>
 

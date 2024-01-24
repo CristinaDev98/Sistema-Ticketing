@@ -7,3 +7,5 @@ $config = [
     'db_username' => 'your_db_username',
     'db_password' => 'your_db_password',
 ];
+
+$conn = new mysqli($config['db_host'], $config['db_username'],$config['db_password'], $config['db_database']);

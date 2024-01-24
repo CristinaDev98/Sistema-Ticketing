@@ -1,46 +1,6 @@
 <?php
 session_start();
-include 'config.php';
-
-if (!isset($_SESSION['user_id'])) {
-    echo 'Non sei autorizzato a visualizzare questa pagina.';
-    exit();
-}
-
-// $conn = new mysqli('localhost', 'root', '', 'sistema_ticketing');
-
-// if ($conn->connect_error) {
-//     die('Connessione al database fallita: ' . $conn->connect_error);
-// }
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_ticket'])) {
-    $ticketIdToUpdate = $_POST['update_ticket'];
-    $newMessage = $_POST['new_message'];
-
-    $queryUpdateTicket = "UPDATE ticket SET message = '$newMessage' WHERE id = '$ticketIdToUpdate'";
-
-    if ($conn->query($queryUpdateTicket) === true) {
-        echo '<script>alert("Ticket aggiornato con successo!"); window.location.href = "view_all_ticket.php";</script>';
-    } else {
-        echo '<script>alert("Errore durante l\'aggiornamento del ticket: ' . $conn->error . '");</script>';
-    }
-}
-
-if (isset($_GET['ticket_id'])) {
-    $ticketIdToEdit = $_GET['ticket_id'];
-
-    $queryTicket = "SELECT * FROM ticket WHERE id = '$ticketIdToEdit'";
-    $resultTicket = $conn->query($queryTicket);
-
-    if (!$resultTicket) {
-        die('Errore nella query: ' . $conn->error);
-    }
-
-    $ticket = $resultTicket->fetch_assoc();
-} else {
-    echo 'Ticket non specificato.';
-    exit();
-}
+include '../admin/edit_ticket_process.php'
 ?>
 
 <!DOCTYPE html>
@@ -178,7 +138,3 @@ if (isset($_GET['ticket_id'])) {
 </body>
 
 </html>
-
-<?php
-$conn->close();
-?>
