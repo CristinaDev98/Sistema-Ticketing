@@ -1,8 +1,3 @@
-<?php
-session_start();
-include '../admin/view_all_ticket_process.php'
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -128,7 +123,7 @@ include '../admin/view_all_ticket_process.php'
             echo '<h2 class="n-ticket">Ticket #' . $ticket['id'] . ' - ' . $ticket['username'] . '</h2>';
             echo '<p>' . $ticket['message'] . '</p>';
             echo '<p>Data creazione: ' . $ticket['created_at'] . '</p>';
-            echo '<a class="edit-button" href="edit_ticket.php?ticket_id=' . $ticket['id'] . '">Modifica Ticket</a>';
+            echo '<a class="edit-button" href="index_edit.php?ticket_id=' . $ticket['id'] . '">Modifica Ticket</a>';
             echo '<form method="post" id="deleteForm_' . $ticket['id'] . '">';
             echo '<input type="hidden" name="delete_ticket" value="' . $ticket['id'] . '">';
             echo '</form>';

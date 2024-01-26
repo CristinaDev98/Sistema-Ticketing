@@ -1,6 +1,4 @@
 <?php
-include '../root/config.php';
-
 class EditTicket
 {
     private $conn;
@@ -25,7 +23,7 @@ class EditTicket
         $queryUpdateTicket = "UPDATE ticket SET message = '$newMessage' WHERE id = '$ticketId'";
 
         if ($this->conn->query($queryUpdateTicket) === true) {
-            echo '<script>alert("Ticket aggiornato con successo!"); window.location.href = "view_all_ticket.php";</script>';
+            echo '<script>alert("Ticket aggiornato con successo!"); window.location.href = "index_view.php";</script>';
         } else {
             echo '<script>alert("Errore durante l\'aggiornamento del ticket: ' . $this->conn->error . '");</script>';
         }
@@ -46,24 +44,4 @@ class EditTicket
 
         return $ticket;
     }
-}
-
-$editTicket = new EditTicket($conn);
-
-$editTicket->checkAuthorization();
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_ticket'])) {
-    $ticketIdToUpdate = $_POST['update_ticket'];
-    $newMessage = $_POST['new_message'];
-
-    $editTicket->updateTicket($ticketIdToUpdate, $newMessage);
-}
-
-if (isset($_GET['ticket_id'])) {
-    $ticketIdToEdit = $_GET['ticket_id'];
-    $ticket = $editTicket->getTicketDetails($ticketIdToEdit);
-} else {
-    echo 'Ticket non specificato.';
-    exit();
 }

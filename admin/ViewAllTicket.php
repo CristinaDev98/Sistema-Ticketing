@@ -1,6 +1,4 @@
 <?php
-include '../root/config.php';
-
 class ViewAllTicket
 {
 
@@ -53,15 +51,4 @@ class ViewAllTicket
     {
         $this->conn->close();
     }
-
-    
 }
-
-$viewAllTicket = new ViewAllTicket($conn);
-
-$viewAllTicket->checkAuthorization();
-$viewAllTicket->deleteTicket();
-$resultAllTickets = $viewAllTicket->getAllTickets();
-$viewAllTicket->closeConnection();
-
-

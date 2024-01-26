@@ -91,7 +91,7 @@ session_start();
     </div>
     <div class="container">
         <h1 class="title-dash">Dahboard Admin</h1>
-        <a href="view_all_ticket.php" style="text-decoration: none;">
+        <a href="index_view.php" style="text-decoration: none;">
             <div class="card">
                 <h2>Visualizza Ticket</h2>
             </div>
