@@ -21,7 +21,7 @@ class Authentication
     public function authenticateUser($username, $password)
     {
         session_start();
-
+        
         $queryVerificaCredenziali = "SELECT id, username, password, role FROM users WHERE username = '$username'";
         $result = $this->conn->query($queryVerificaCredenziali);
 
@@ -31,14 +31,14 @@ class Authentication
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            $dbPassword = $row['password'];
+            $dbPasswordHash = $row['password'];
             $role = $row['role'];
 
-            if ($password === $dbPassword) {
+            if (password_verify($password, $dbPasswordHash)) {
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['role'] = $role;
-
+    
                 if ($role === 'utilizzatore') {
                     header('Location: ../user/dashboard.php');
                 } elseif ($role === 'amministratore') {

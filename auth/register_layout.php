@@ -18,6 +18,7 @@
             <input type="text" id="username" name="username" placeholder="Nome Utente" required>
             <br>
             <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Conferma Password" required>
             <input type="submit" value="Registrati">
         </form>
     </div>

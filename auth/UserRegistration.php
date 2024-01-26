@@ -10,7 +10,9 @@ class UserRegistration
 
     public function registerUser($username, $password, $role = 'utilizzatore')
     {
-        $queryInserimento = "INSERT INTO users (username, password, role) VALUES ('$username', '$password', '$role')";
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $queryInserimento = "INSERT INTO users (username, password, role) VALUES ('$username', '$hashedPassword', '$role')";
 
         if ($this->conn->query($queryInserimento) === true) {
             echo '<script>
