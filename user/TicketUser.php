@@ -1,6 +1,4 @@
 <?php
-include '../root/config.php';
-
 class TicketUser {
      private $conn;
 
@@ -56,9 +54,3 @@ class TicketUser {
         $this->conn->close();
     }
 }
-
-$ticketUser = new TicketUser($conn);
-
-$ticketUser->deleteTicket();
-$resultTicket = $ticketUser->getTickets();
-$ticketUser->closeConnection();

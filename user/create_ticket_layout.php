@@ -1,8 +1,3 @@
-<?php
-session_start();
-include '../user/ticket_process.php'
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,7 +55,7 @@ include '../user/ticket_process.php'
     </div>
 
     <div class="container">
-        <form class="form" action="ticket_process.php" method="POST">
+        <form class="form" action="index_create.php" method="POST">
 
             <div class="flex">
                 <h1 style="text-align: center;">Crea un ticket</h1>

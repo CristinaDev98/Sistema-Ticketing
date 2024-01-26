@@ -1,8 +1,3 @@
-<?php
-session_start();
-include '../user/view_ticket_process.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,9 +1,4 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-include '../root/config.php';
-
 class TicketCreate
 {
 
@@ -48,9 +43,3 @@ class TicketCreate
         $this->conn->close();
     }
 }
-
-$ticketCreate = new TicketCreate($conn);
-
-$ticketCreate->checkAuthorization();
-$ticketCreate->createTicket();
-$ticketCreate->closeConnection();

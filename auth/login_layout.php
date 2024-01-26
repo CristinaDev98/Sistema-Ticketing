@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Ticketing - Registrati</title>
+    <title>Sistema Ticketing</title>
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="../style.css">
@@ -13,12 +13,13 @@
 
 <body>
     <div class="card">
-        <h1>Registrati</h1>
-        <form action="register_process.php" method="post">
+        <h1>Login</h1>
+        <form action="index_login.php" method="post">
             <input type="text" id="username" name="username" placeholder="Nome Utente" required>
             <br>
             <input type="password" id="password" name="password" placeholder="Password" required>
-            <input type="submit" value="Registrati">
+            <input type="submit" id="loginButton" value="Login">
+            <button type="button"><a id="registerButton" href="index_register.php">Registrati</a></button>
         </form>
     </div>
 </body>
