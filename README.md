@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS users (
 ```
 ```bash
 INSERT INTO users (username, password, role) VALUES
-('amministratore', 'PassAmministratore', 'amministratore');
+('amministratore', '$2y$10$dkWm4OnkzqE5Udl/nn6K1.emsqtUK1tAcTg/hHZSgMsxLquXAh4ga', 'amministratore');
 ```
 
 ```bash
