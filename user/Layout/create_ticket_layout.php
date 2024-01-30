@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Ticketing</title>
 
-    <link rel="stylesheet" type="text/css" href="../style_ticket.css">
+    <link rel="stylesheet" type="text/css" href="../../style_ticket.css">
 
     <style>
         body {
@@ -50,12 +50,12 @@
     <div class="navbar">
         <div class="container">
             <h1 class="title-nav">Sistema Ticketing</h1>
-            <h3 class="home-link" onclick="location.href='/user/dashboard.php'">Home</h3>
+            <h3 class="home-link" onclick="location.href='../Layout/dashboard.php'">Home</h3>
         </div>
     </div>
 
     <div class="container">
-        <form class="form" action="index_create.php" method="POST">
+        <form class="form" action="../Controller/index_create.php" method="POST">
 
             <div class="flex">
                 <h1 style="text-align: center;">Crea un ticket</h1>
@@ -65,7 +65,7 @@
                 <span>Messaggio</span>
             </label>
 
-            <button class="fancy" type="submit" href="/user/dashboard.php">
+            <button class="fancy" type="submit" href="../Layout/dashboard.php">
                 <span class="top-key"></span>
                 <span class="text">Apri Ticket</span>
                 <span class="bottom-key-1"></span>

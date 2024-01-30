@@ -30,7 +30,7 @@ class TicketCreate
             if ($this->conn->query($queryInserimentoTicket) === true) {
                 echo '<script>
                     alert("Ticket creato con successo!");
-                    window.location.href = "/user/dashboard.php";
+                    window.location.href = "../Layout/dashboard.php";
                 </script>';
                 exit();
             } else {

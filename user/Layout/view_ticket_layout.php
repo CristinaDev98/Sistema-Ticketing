@@ -104,7 +104,7 @@
     <div class="navbar">
         <div class="container">
             <h1 class="title-nav">Sistema Ticketing</h1>
-            <h3 class="home-link" onclick="location.href='dashboard.php'">Home</h3>
+            <h3 class="home-link" onclick="location.href='../Layout/dashboard.php'">Home</h3>
         </div>
     </div>
 
@@ -117,7 +117,7 @@
             echo '<h2 class="n-ticket">Ticket #' . $ticket['id'] . '</h2>';
             echo '<p>' . $ticket['message'] . '</p>';
             echo '<p>Data creazione: ' . $ticket['created_at'] . '</p>';
-            echo '<form method="post" id="deleteForm_' . $ticket['id'] . '">';
+            echo '<form method="post" action="../Controller/index_delete.php" id="deleteForm_' . $ticket['id'] . '">';
             echo '<input type="hidden" name="delete_ticket" value="' . $ticket['id'] . '">';
             echo '</form>';
             echo '</div>';

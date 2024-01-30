@@ -40,7 +40,7 @@ class Authentication
                 $_SESSION['role'] = $role;
     
                 if ($role === 'utilizzatore') {
-                    header('Location: ../user/dashboard.php');
+                    header('Location: ../user/Layout/dashboard.php');
                 } elseif ($role === 'amministratore') {
                     header('Location: ../admin/Layout/dashboard_admin.php');
                 } else {
