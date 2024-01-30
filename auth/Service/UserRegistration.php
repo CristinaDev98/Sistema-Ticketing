@@ -17,7 +17,7 @@ class UserRegistration
         if ($this->conn->query($queryInserimento) === true) {
             echo '<script>
                     alert("Utente registrato con successo! Effettua il login");
-                    window.location.href = "index_login.php";
+                    window.location.href = "../Controller/index_login.php";
                  </script>';
         } else {
             echo 'Errore durante la registrazione: ' . $this->conn->error;

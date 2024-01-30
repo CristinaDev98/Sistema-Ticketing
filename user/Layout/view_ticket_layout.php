@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
@@ -111,16 +111,20 @@
     <div class="container">
         <h1 class="title-dash">I tuoi ticket</h1>
         <?php
-        foreach ($resultTicket as $ticket) {
-            echo '<div class="card-ticket">';
-            echo '<button class="delete-button" type="submit" form="deleteForm_' . $ticket['id'] . '">&times;</button>';
-            echo '<h2 class="n-ticket">Ticket #' . $ticket['id'] . '</h2>';
-            echo '<p>' . $ticket['message'] . '</p>';
-            echo '<p>Data creazione: ' . $ticket['created_at'] . '</p>';
-            echo '<form method="post" action="../Controller/index_delete.php" id="deleteForm_' . $ticket['id'] . '">';
-            echo '<input type="hidden" name="delete_ticket" value="' . $ticket['id'] . '">';
-            echo '</form>';
-            echo '</div>';
+        if ($resultTicket->num_rows > 0) {
+            foreach ($resultTicket as $ticket) {
+                echo '<div class="card-ticket">';
+                echo '<button class="delete-button" type="submit" form="deleteForm_' . $ticket['id'] . '">&times;</button>';
+                echo '<h2 class="n-ticket">Ticket #' . $ticket['id'] . '</h2>';
+                echo '<p>' . $ticket['message'] . '</p>';
+                echo '<p>Data creazione: ' . $ticket['created_at'] . '</p>';
+                echo '<form method="post" action="../Controller/index_delete.php" id="deleteForm_' . $ticket['id'] . '">';
+                echo '<input type="hidden" name="delete_ticket" value="' . $ticket['id'] . '">';
+                echo '</form>';
+                echo '</div>';
+            }
+        } else {
+            echo '<p style="text-align: center; font-size: Large;">Nessun ticket da visualizzare.</p>';
         }
         ?>
     </div>

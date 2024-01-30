@@ -8,16 +8,6 @@ class Authentication
         $this->conn = $conn;
     }
 
-    public function logout()
-    {
-        session_start();
-        session_unset();
-        session_destroy();
-        $_SESSION['logout_message'] = 'Logout effettuato con successo.';
-        header('Location: ./index_login.php');
-        exit();
-    }
-
     public function authenticateUser($username, $password)
     {
         session_start();
@@ -40,9 +30,9 @@ class Authentication
                 $_SESSION['role'] = $role;
     
                 if ($role === 'utilizzatore') {
-                    header('Location: ../user/Layout/dashboard.php');
+                    header('Location: /user/Layout/dashboard.php');
                 } elseif ($role === 'amministratore') {
-                    header('Location: ../admin/Layout/dashboard_admin.php');
+                    header('Location: /admin/Layout/dashboard_admin.php');
                 } else {
                     echo 'Errore: Ruolo non valido.';
                 }

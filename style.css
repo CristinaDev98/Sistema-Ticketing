@@ -60,13 +60,13 @@ box-sizing: border-box;
 border: 0px;
 }
 
-#loginButton {
+#loginButton, #btnRegister {
 border: 1px;
 min-width: 100%;
 border-radius: 6px;
 }
 
-#registerButton {
+#registerButton, #btnLogin {
 text-decoration: none;
 color: #5466eb;
 }

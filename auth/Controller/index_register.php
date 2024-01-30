@@ -1,6 +1,6 @@
 <?php
-include '../root/config.php';
-include '../auth/UserRegistration.php';
+include '../../root/config.php';
+include '../Service/UserRegistration.php';
 
 $userRegistration = new UserRegistration($conn);
 
@@ -16,4 +16,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-include '../auth/register_layout.php';
+include '../Layout/register_layout.php';

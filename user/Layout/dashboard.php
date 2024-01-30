@@ -3,7 +3,7 @@ session_start();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
@@ -80,7 +80,7 @@ session_start();
                 if (isset($_SESSION['username']) && isset($_SESSION['role']) && $_SESSION['role'] === 'utilizzatore') {
                     echo '<span style="font-size: 1.2em;">Ciao, ' . $_SESSION['username'] . '</span>';
                     echo '<br>';
-                    echo '<a class="logout-button" href="/auth/index_login.php?logout">Logout</a>';
+                    echo '<a class="logout-button" href="/auth/Controller/index_login.php?logout">Logout</a>';
                 } else {
                     echo 'Non sei autorizzato a visualizzare questa pagina.';
                 }

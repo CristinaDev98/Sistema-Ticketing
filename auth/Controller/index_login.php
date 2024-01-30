@@ -1,13 +1,14 @@
 <?php
 session_start();
-include '../root/config.php';
-include '../auth/Authentication.php';
+include '../../root/config.php';
+include '../Service/Authentication.php';
+include '../Service/Logout.php';
 
 $authenticator = new Authentication($conn);
 
-if (isset($_GET['logout'])) {
-    $authenticator->logout();
-}
+// if (isset($_GET['logout'])) {
+//     $authenticator->logout();
+// }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -16,4 +17,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $authenticator->authenticateUser($username, $password);
 }
 
-include '../auth/login_layout.php';
+include '../Layout/login_layout.php';

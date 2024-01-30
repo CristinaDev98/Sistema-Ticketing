@@ -7,19 +7,19 @@
     <title>Sistema Ticketing</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../../style.css">
 
 </head>
 
 <body>
     <div class="card">
         <h1>Login</h1>
-        <form action="index_login.php" method="post">
+        <form action="../Controller/index_login.php" method="post">
             <input type="text" id="username" name="username" placeholder="Nome Utente" required>
             <br>
             <input type="password" id="password" name="password" placeholder="Password" required>
             <input type="submit" id="loginButton" value="Login">
-            <button type="button"><a id="registerButton" href="index_register.php">Registrati</a></button>
+            <button type="button"><a id="registerButton" href="/auth/Controller/index_register.php">Registrati</a></button>
         </form>
     </div>
 </body>
