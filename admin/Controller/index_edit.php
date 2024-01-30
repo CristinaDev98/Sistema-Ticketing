@@ -1,9 +1,9 @@
 <?php
 session_start();
-include '../root/config.php';
-include '../admin/EditTicket.php';
+include '../../root/config.php';
+include '../Service/TicketEdit.php';
 
-$editTicket = new EditTicket($conn);
+$editTicket = new TicketEdit($conn);
 
 $editTicket->checkAuthorization();
 
@@ -19,4 +19,4 @@ if (isset($_GET['ticket_id'])) {
     $ticket = $editTicket->getTicketDetails($ticketIdToEdit);
 }
 
-include '../admin/edit_ticket_layout.php';
+include '../Layout/edit_ticket_layout.php';

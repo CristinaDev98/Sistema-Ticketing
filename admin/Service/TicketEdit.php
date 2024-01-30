@@ -1,5 +1,5 @@
 <?php
-class EditTicket
+class TicketEdit
 {
     private $conn;
 
@@ -23,7 +23,7 @@ class EditTicket
         $queryUpdateTicket = "UPDATE ticket SET message = '$newMessage' WHERE id = '$ticketId'";
 
         if ($this->conn->query($queryUpdateTicket) === true) {
-            echo '<script>alert("Ticket aggiornato con successo!"); window.location.href = "index_view.php";</script>';
+            echo '<script>alert("Ticket aggiornato con successo!"); window.location.href = "../Controller/index_view.php";</script>';
         } else {
             echo '<script>alert("Errore durante l\'aggiornamento del ticket: ' . $this->conn->error . '");</script>';
         }

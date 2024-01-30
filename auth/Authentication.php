@@ -42,7 +42,7 @@ class Authentication
                 if ($role === 'utilizzatore') {
                     header('Location: ../user/dashboard.php');
                 } elseif ($role === 'amministratore') {
-                    header('Location: ../admin/dashboard_admin.php');
+                    header('Location: ../admin/Layout/dashboard_admin.php');
                 } else {
                     echo 'Errore: Ruolo non valido.';
                 }
