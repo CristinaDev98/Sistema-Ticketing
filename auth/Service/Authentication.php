@@ -10,7 +10,9 @@ class Authentication
 
     public function authenticateUser($username, $password)
     {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         
         $queryVerificaCredenziali = "SELECT id, username, password, role FROM users WHERE username = '$username'";
         $result = $this->conn->query($queryVerificaCredenziali);

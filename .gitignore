@@ -1,2 +1,8 @@
 # File di configurazione locale
 config.php
+
+# File enviroment
+.env
+
+# PHP storm
+.idea
